@@ -1,0 +1,23 @@
+{
+  "name": "@hexlet/code",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Second project",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndreyCurious/frontend-project-46.git"
+  },
+  "author": "Andrey Didenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndreyCurious/frontend-project-46/issues"
+  },
+  "homepage": "https://github.com/AndreyCurious/frontend-project-46#readme",
+  "bin": {
+    "gendiff": "bin/gendiff.js"
+  }
+}

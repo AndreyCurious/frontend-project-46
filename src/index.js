@@ -15,7 +15,7 @@ const getDifferences = (obj1, obj2) => {
   const keys2 = Object.keys(obj2);
 
   const keys = _.sortBy(_.union(keys1, keys2));
-  //console.log(keys);
+
   const result = keys.map((key) => {
     const value1 = obj1[key];
     const value2 = obj2[key];

@@ -37,7 +37,7 @@ jobs:
       - run: make test
       - name: Test & publish code coverage
           env:
-              CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+              CC_TEST_REPORTER_ID: d7222b210f2aa699a52c0a2f35b617c29b7adbdb448db831ea2ae75c58884574
           with:
             coverageCommand: make test-coverage
             debug: true

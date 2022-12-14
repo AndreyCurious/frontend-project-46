@@ -5,4 +5,4 @@ lint:
 test: 
 	node bin/gendiff.js
 test-coverage: 
-	npx jest --coverage
+	npm test --coverage

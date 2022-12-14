@@ -28,11 +28,10 @@ const getDifferences = (obj1, obj2) => {
   return `{\n${result.join('\n')}\n}`;
 };
 
-const gendiff = (filepath1, filepath2) => {
+export default (filepath1, filepath2) => {
   const obj1 = JSON.parse(readFileSync(filepath1));
   const obj2 = JSON.parse(readFileSync(filepath2));
 
   const result = getDifferences(obj1, obj2);
   return result;
 };
-export default gendiff;

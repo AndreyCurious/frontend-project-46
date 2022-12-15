@@ -3,6 +3,6 @@ install:
 lint: 
 	npx eslint .
 test: 
-	node bin/gendiff.js
+	npm test
 test-coverage: 
 	npm test -- --coverage --coverageProvider=v8

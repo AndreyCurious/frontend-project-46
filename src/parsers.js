@@ -9,6 +9,8 @@ export default (filepath) => {
     parse = JSON.parse;
   } else if (format === '.yml' || format === '.yaml') {
     parse = yaml.load;
+  } else {
+    throw new Error(`Unsupported format:${format}`);
   }
   return parse;
 };

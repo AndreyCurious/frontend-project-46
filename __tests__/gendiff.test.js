@@ -19,3 +19,9 @@ test('yml', () => {
   const result = gendiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'));
   expect(result).toEqual(expected);
 });
+
+test('yaml', () => {
+  const expected = readFileSync(getFixturePath('resultTests'), 'utf-8');
+  const result = gendiff(getFixturePath('file1.yaml'), getFixturePath('file2.yaml'));
+  expect(result).toEqual(expected);
+});

@@ -1,7 +1,7 @@
 const getTree = (gendiff) => {
   const result = gendiff.map((item) => {
     if (item.type === 'nested') {
-      return `${item.key}:${getTree(item.children)}`;
+      return `${item.key}:${makeIndent(getTree(item.children))}`;
     }
     if (item.type === 'change') {
       return `- ${item.key}:${item.value1} \n+ ${item.key}:${item.value2}`;

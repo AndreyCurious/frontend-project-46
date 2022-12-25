@@ -2,15 +2,15 @@ import yaml from 'js-yaml';
 import { extname } from 'path';
 
 export default (filepath) => {
-  const format = extname(filepath);
+  const extension = extname(filepath);
   // console.log(format);
   let parse;
-  if (format === '.json') {
+  if (extension === '.json') {
     parse = JSON.parse;
-  } else if (format === '.yml' || format === '.yaml') {
+  } else if (extension === '.yml' || extension === '.yaml') {
     parse = yaml.load;
   } else {
-    throw new Error(`Unsupported format:${format}`);
+    throw new Error(`Unsupported extension:${extension}`);
   }
   return parse;
 };

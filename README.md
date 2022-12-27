@@ -18,7 +18,7 @@ Output formats:
 Copy repository and install the dependencies.
 
 ```sh
-git clone https://github.com/Vasily7277/frontend-project-46
+git clone git@github.com:AndreyCurious/frontend-project-46.git
 cd frontend-project-46/
 make install
 ```

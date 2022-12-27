@@ -26,14 +26,20 @@ test('yaml', () => {
   expect(result).toEqual(expected);
 });
 
-test('plain', () => {
+test('plainFormat', () => {
   const expected = readFileSync(getFixturePath('plainResult'), 'utf-8');
   const result = gendiff(getFixturePath('file1.yaml'), getFixturePath('file2.yaml'), 'plain');
   expect(result).toEqual(expected);
 });
 
-test('stylish', () => {
+test('stylishFormat', () => {
   const expected = readFileSync(getFixturePath('stylishResult'), 'utf-8');
   const result = gendiff(getFixturePath('file1.yaml'), getFixturePath('file2.yaml'), 'stylish');
+  expect(result).toEqual(expected);
+});
+
+test('jsonFormat', () => {
+  const expected = readFileSync(getFixturePath('jsonResult'), 'utf-8');
+  const result = gendiff(getFixturePath('file1.yaml'), getFixturePath('file2.yaml'), 'json');
   expect(result).toEqual(expected);
 });

@@ -1,5 +1,6 @@
 import stylish from './stylish.js';
 import plain from './plain.js';
+import json from './json.js';
 
 export default (file, format = 'stylish') => {
   if (format === 'stylish') {
@@ -7,6 +8,9 @@ export default (file, format = 'stylish') => {
   }
   if (format === 'plain') {
     return plain(file);
+  }
+  if (format === 'json') {
+    return json(file);
   }
   throw new Error(console.log(`Unsupported format: ${format}`));
 };

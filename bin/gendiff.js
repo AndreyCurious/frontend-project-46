@@ -15,6 +15,8 @@ program
       console.log(gendiff(filepath1, filepath2, 'stylish'));
     } else if (option.format === 'plain') {
       console.log(gendiff(filepath1, filepath2, 'plain'));
+    } else if (option.format === 'json') {
+      console.log(gendiff(filepath1, filepath2, 'json'));
     }
   });
 program.parse();

@@ -1,6 +1,5 @@
 const makeSpaces = (value) => {
   const resultFile = value.split('\n');
-  // console.log(file)
   return resultFile.map((str) => {
     if (str !== resultFile[0]) {
       return `    ${str}`;
@@ -11,7 +10,6 @@ const makeSpaces = (value) => {
 
 const makeString = (value) => {
   const newFile = JSON.stringify(value, null, 4);
-  // console.log(newFile);
   const quoted = newFile.replaceAll('"', '');
   const result = makeSpaces(quoted);
   return result.replaceAll(',', '');
@@ -25,10 +23,10 @@ const getTree = (differences) => {
     if (item.type === 'change') {
       return `  - ${item.key}: ${makeString(item.value1)}\n  + ${item.key}: ${makeString(item.value2)}`;
     }
-    if (item.type === 'plus') {
+    if (item.type === 'add') {
       return `  + ${item.key}: ${makeString(item.value)}`;
     }
-    if (item.type === 'minus') {
+    if (item.type === 'delete') {
       return `  - ${item.key}: ${makeString(item.value)}`;
     }
     return `    ${item.key}: ${makeString(item.value)}`;

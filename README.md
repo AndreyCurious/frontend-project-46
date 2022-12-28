@@ -5,7 +5,7 @@
 
 
 ## Description
-The Difference Calculator processes and performs the calculation of differences between two files.
+The Difference Calculator processes and calculates the difference between two files and outputs the result in three different formats.
 ## System requirements
 node  js v18 +
 

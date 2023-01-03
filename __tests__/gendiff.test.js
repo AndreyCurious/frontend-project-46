@@ -24,11 +24,11 @@ describe.each([
 });
 
 describe.each([
-  ['stylish']
+  ['stylish'],
 ])('format %s', (format) => {
   test.each([
     ['yaml'],
-    ['yml']
+    ['yml'],
   ])('extension %s', (extension) => {
     const expected = readFileSync(getFixturePath(`${format}Result`), 'utf-8');
     const file1 = getFixturePath(`file1.${extension}`);

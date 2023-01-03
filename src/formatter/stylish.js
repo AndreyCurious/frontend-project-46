@@ -1,17 +1,16 @@
-import _ from 'lodash'
+import _ from 'lodash';
+
 const makeSpaces = (depth, spacesCount = 4) => ' '.repeat(depth * spacesCount - 2);
 
 const makeString = (data, depth = 1) => {
-  //console.log(data)
+  // console.log(data)
   if (!_.isObject(data)) {
-    //console.log(String(data));
+    // console.log(String(data));
     return String(data);
   }
-  const result = Object.entries(data)
-  const r1 = result.map(([key, value]) => {
-    return `  ${makeSpaces(depth + 1)}${key}: ${makeString(value, depth + 1)}`
-  })
-  //console.log(result)
+  const result = Object.entries(data);
+  const r1 = result.map(([key, value]) => `  ${makeSpaces(depth + 1)}${key}: ${makeString(value, depth + 1)}`);
+  // console.log(result)
   return `{\n${r1.join('\n')}\n${makeSpaces(depth)}  }`;
 };
 
@@ -34,6 +33,4 @@ const getTree = (differences, depth = 1) => {
   return `\n${result.join('\n')}\n`;
 };
 
-export default (tree) => {
-  return `{${getTree(tree)}}`
-}
+export default (tree) => `{${getTree(tree)}}`;

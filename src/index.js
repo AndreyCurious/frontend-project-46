@@ -11,8 +11,8 @@ export default (filepath1, filepath2, format) => {
   const file1 = readFileSync(filepath1);
   const file2 = readFileSync(filepath2);
 
-  const obj1 = parse(file1, extension1);
-  const obj2 = parse(file2, extension2);
+  const data1 = parse(file1, extension1);
+  const data2 = parse(file2, extension2);
 
-  return getFormatTree(buldDiff(obj1, obj2), format);
+  return getFormatTree(buldDiff(data1, data2), format);
 };

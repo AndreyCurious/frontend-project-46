@@ -1,37 +1,39 @@
-const makeSpaces = (value) => {
-  const resultFile = value.split('\n');
-  return resultFile.map((str) => {
-    if (str !== resultFile[0]) {
-      return `    ${str}`;
-    }
-    return str;
-  }).join('\n');
+import _ from 'lodash'
+const makeSpaces = (depth, spacesCount = 4) => ' '.repeat(depth * spacesCount - 2);
+
+const makeString = (data, depth = 1) => {
+  //console.log(data)
+  if (!_.isObject(data)) {
+    //console.log(String(data));
+    return String(data);
+  }
+  const result = Object.entries(data)
+  const r1 = result.map(([key, value]) => {
+    return `  ${makeSpaces(depth + 1)}${key}: ${makeString(value, depth + 1)}`
+  })
+  //console.log(result)
+  return `{\n${r1.join('\n')}\n${makeSpaces(depth)}  }`;
 };
 
-const makeString = (value) => {
-  const newFile = JSON.stringify(value, null, 4);
-  const quoted = newFile.replaceAll('"', '');
-  const result = makeSpaces(quoted);
-  return result.replaceAll(',', '');
-};
-
-const getTree = (differences) => {
+const getTree = (differences, depth = 1) => {
   const result = differences.map((item) => {
     if (item.type === 'nested') {
-      return `    ${item.key}: ${makeSpaces(getTree(item.children))}`;
+      return `${makeSpaces(depth)}  ${item.key}: {${makeString(getTree(item.children, depth + 1))}${makeSpaces(depth)}  }`;
     }
     if (item.type === 'change') {
-      return `  - ${item.key}: ${makeString(item.value1)}\n  + ${item.key}: ${makeString(item.value2)}`;
+      return `${makeSpaces(depth)}- ${item.key}: ${makeString(item.value1, depth)}\n${makeSpaces(depth)}+ ${item.key}: ${makeString(item.value2, depth)}`;
     }
     if (item.type === 'add') {
-      return `  + ${item.key}: ${makeString(item.value)}`;
+      return `${makeSpaces(depth)}+ ${item.key}: ${makeString(item.value, depth)}`;
     }
     if (item.type === 'delete') {
-      return `  - ${item.key}: ${makeString(item.value)}`;
+      return `${makeSpaces(depth)}- ${item.key}: ${makeString(item.value, depth)}`;
     }
-    return `    ${item.key}: ${makeString(item.value)}`;
+    return `${makeSpaces(depth)}  ${item.key}: ${makeString(item.value, depth)}`;
   });
-  return `{\n${result.join('\n')}\n}`;
+  return `\n${result.join('\n')}\n`;
 };
 
-export default getTree;
+export default (tree) => {
+  return `{${getTree(tree)}}`
+}

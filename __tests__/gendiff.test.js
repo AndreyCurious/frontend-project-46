@@ -23,13 +23,16 @@ describe.each([
   });
 });
 
-test.each([
-  ['json'],
-  ['yml'],
-  ['yaml'],
-])('extension %s', (extension) => {
-  const expected = readFileSync(getFixturePath('stylishResult'), 'utf-8');
-  const file1 = getFixturePath(`file1.${extension}`);
-  const file2 = getFixturePath(`file2.${extension}`);
-  expect(gendiff(file1, file2)).toEqual(expected);
+describe.each([
+  ['stylish']
+])('format %s', (format) => {
+  test.each([
+    ['yaml'],
+    ['yml']
+  ])('extension %s', (extension) => {
+    const expected = readFileSync(getFixturePath(`${format}Result`), 'utf-8');
+    const file1 = getFixturePath(`file1.${extension}`);
+    const file2 = getFixturePath(`file2.${extension}`);
+    expect(gendiff(file1, file2, format)).toEqual(expected);
+  });
 });

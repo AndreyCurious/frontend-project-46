@@ -12,5 +12,5 @@ export default (file, format = 'stylish') => {
   if (format === 'json') {
     return json(file);
   }
-  throw new Error(console.log(`Unsupported format: ${format}`));
+  throw new Error(`Unsupported format: ${format}`);
 };
